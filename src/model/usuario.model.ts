@@ -15,9 +15,12 @@ class Usuario {
     password: string;
 
     @IsInt()
+    @IsOptional()
     activo: number;
 
-    @IsInt()
+ 
+    @IsInt()   
+    @IsOptional()
     rolId: number;
 }
 
