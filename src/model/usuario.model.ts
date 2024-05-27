@@ -6,6 +6,7 @@ class Usuario {
     usuarioId: number;
 
     @IsString()
+    @IsOptional()
     nombre: string;
 
     @IsString()
