@@ -30,7 +30,7 @@ export class LoginService {
     const dbUser = {
       email: resultQuery[0].email,
       password: resultQuery[0].password,
-      codigo: resultQuery[0].codigo,
+      rolId: resultQuery[0].rolId,
     };
 
     const isValidPassword = (dbUser.password === user.password)
@@ -47,10 +47,10 @@ export class LoginService {
   }
 
   getAccessToken(user: any) {
-    const payload = { email: user.email, role: user.codigo };
+    const payload = { email: user.email, role: user.rolId };
     return {     
        email: user.email,
-      codigo: user.codigo,
+      rolId: user.rolId,
       accessToken: this.jwtService.sign(payload),
     };
   }
