@@ -24,6 +24,8 @@ export class LoginService {
       usuarioQueries.selectByEmail,
       [user.email],
     );
+    const ha = await this.generateHash(user.password)
+    console.log(ha)
     if (resultQuery.length === 0) {
       throw new HttpException('Acceso denegado', HttpStatus.UNAUTHORIZED);
     }
@@ -33,11 +35,11 @@ export class LoginService {
       rolId: resultQuery[0].rolId,
     };
 
-    const isValidPassword = (dbUser.password === user.password)
-    //await bcrypt.compare(
-      //user.password,
-      //dbUser.password,
-    //);
+    //CONTRASEÑA TIENE QUE ESTAR HASHEADA
+    const isValidPassword =await bcrypt.compare(
+      user.password,
+      dbUser.password,
+    ); 
 
     if (!isValidPassword) {
       throw new HttpException('Acceso no autorizado', HttpStatus.UNAUTHORIZED);
@@ -47,7 +49,7 @@ export class LoginService {
   }
 
   getAccessToken(user: any) {
-    const payload = { email: user.email, role: user.rolId };
+    const payload = { email: user.email, rolId: user.rolId };
     return {     
        email: user.email,
       rolId: user.rolId,

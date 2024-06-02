@@ -6,16 +6,17 @@ import { DatabaseService } from './service/db.service';
 import { UsuarioService } from './service/usuario.service';
 import { LoginController } from './controller/login.controller';
 import { LoginService } from './service/login.service';
-import { JwtModule, JwtService } from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
+import { JwtMiddlewareGuard } from './middleware/auth-guard';
 
 
 @Module({
   imports: [ JwtModule.register({
-    secret: '$2a$08$W59jWcwio1TiLx4A8iRyTO',
+    secret: 'wokdfaojkfawjofjwoafjopwfjaopfwjapofjwoapjfwoj',
     signOptions: {expiresIn: '1h'},
   })
   ],
   controllers: [AppController, UsuarioController, LoginController],
-  providers: [AppService, DatabaseService, UsuarioService, LoginService ],
+  providers: [AppService, DatabaseService, UsuarioService, LoginService, JwtMiddlewareGuard ],
 })
 export class AppModule {}
