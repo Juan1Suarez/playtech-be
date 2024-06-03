@@ -24,8 +24,7 @@ export class LoginService {
       usuarioQueries.selectByEmail,
       [user.email],
     );
-    const ha = await this.generateHash(user.password)
-    console.log(ha)
+     await this.generateHash(user.password)
     if (resultQuery.length === 0) {
       throw new HttpException('Acceso denegado', HttpStatus.UNAUTHORIZED);
     }

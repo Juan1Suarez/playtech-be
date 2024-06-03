@@ -3,7 +3,7 @@ const usuarioQueries = {
     selectAll: 'SELECT usuarioId, nombre, email, password, activo, rolId FROM usuario;',
     delete: 'DELETE FROM usuario WHERE usuarioId = ?;',
     selectByEmail: 'SELECT * FROM usuario u join roles r on u.rolId = r.rolId WHERE u.email = ?',
-
+    selectById: 'SELECT * FROM usuario WHERE usuarioId = ?'
   }
   
   export default usuarioQueries;
