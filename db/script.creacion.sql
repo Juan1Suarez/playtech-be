@@ -1,4 +1,3 @@
-
 create schema if not exists playtech;
 
 use playtech;
@@ -21,4 +20,16 @@ activo tinyint not null,
 rolId integer,
 primary key (usuarioId),
 constraint FK_usuario_roles foreign key (rolId) references roles(rolId)
+)
+
+create table producto (
+productoId int not null auto_increment,
+tipoDeProducto varchar(30),
+modelo varchar(100),
+precio int not null,
+foto varchar(2000),
+color varchar(100),
+descripcion varchar(2000),
+stock int not null,
+primary key (productoId)
 )

@@ -8,6 +8,8 @@ import { LoginController } from './controller/login.controller';
 import { LoginService } from './service/login.service';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtMiddlewareGuard } from './middleware/auth-guard';
+import { ProductoController } from './controller/producto.controller';
+import { ProductoService } from './service/producto.service';
 
 
 @Module({
@@ -16,7 +18,7 @@ import { JwtMiddlewareGuard } from './middleware/auth-guard';
     signOptions: {expiresIn: '1h'},
   })
   ],
-  controllers: [AppController, UsuarioController, LoginController],
-  providers: [AppService, DatabaseService, UsuarioService, LoginService, JwtMiddlewareGuard ],
+  controllers: [AppController, UsuarioController, LoginController, ProductoController],
+  providers: [AppService, DatabaseService, UsuarioService, LoginService, JwtMiddlewareGuard, ProductoService ],
 })
 export class AppModule {}
