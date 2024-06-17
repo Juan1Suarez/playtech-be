@@ -26,6 +26,8 @@ export class ProductoService {
           color: rs['color'],
           descripcion: rs['descripcion'],
           stock: rs['stock'],
+          fotoDelete: rs ['fotoDelete'],
+          fotoDisplay: rs['fotoDisplay'],
         };
       });
       return resultProducto;

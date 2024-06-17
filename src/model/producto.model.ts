@@ -29,6 +29,12 @@ class Producto {
     @IsInt()   
     stock: number;
 
+    @IsString()   
+    fotoDelete: string;
+
+    @IsString()   
+    fotoDisplay: string;
+
 }
 
 export default Producto

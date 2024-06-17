@@ -11,3 +11,6 @@ insert into usuario (nombre, email, password, activo, rolId) values ("Eustaquio"
 
 insert into producto (tipoDeProducto, modelo , precio, foto, color, descripcion, stock) values 
 ("Auriculares", "Logitech G-series G435 inalambrico", 138.000 , "ihfehioafwehoifawhipoawhiowafq3iho54io2a4h1" ,"Blanco y lila", "Estos son unos auriculares gamer con los que podrás experimentar la adrenalina extrema que producen arduas horas de gaming", 4);
+
+insert into producto (tipoDeProducto, modelo , precio, foto, color, descripcion, stock) values 
+("Auriculares", "Nisuta nSaug 305", 49000, "foto", "Verde y marron", "Los mejores auriculares del mercado, con estos podras sacar el maximo potencial de tus habilidades gamer", 12)
