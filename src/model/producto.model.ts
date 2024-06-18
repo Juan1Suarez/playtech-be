@@ -15,6 +15,7 @@ class Producto {
     precio: number;
 
     @IsString()
+    @IsOptional()
     foto: string;
 
  
@@ -29,10 +30,12 @@ class Producto {
     @IsInt()   
     stock: number;
 
-    @IsString()   
+    @IsString()
+    @IsOptional()   
     fotoDelete: string;
 
-    @IsString()   
+    @IsString()
+    @IsOptional()   
     fotoDisplay: string;
 
 }

@@ -13,7 +13,7 @@ export class ImagenController {
     @UploadedFile(
       new ParseFilePipeBuilder()
         .addFileTypeValidator({
-          fileType: /(jpg|jpeg|png|gif)$/,
+          fileType: /(jpg|jpeg|png|webp)$/,
         })
         .addMaxSizeValidator({
           maxSize: 10240000,
@@ -21,8 +21,9 @@ export class ImagenController {
         })
         .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
     )
-    file: Express.Multer.File,
+    file: Express.Multer.File, 
+    @Body('productoId') productoId: number,
   ) {
-    return await this.imagenService.upload(file);
+      return this.imagenService.upload(file, productoId);
+    }
   }
-}
