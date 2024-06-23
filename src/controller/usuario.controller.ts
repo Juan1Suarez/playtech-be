@@ -29,8 +29,7 @@ export class UsuarioController {
   }
 
   @Delete(':usuarioId')
-  async eliminarUsuario(@Param('usuarioId', ParseIntPipe) usuarioId: number): Promise<{ message: string }> {
+  async eliminarUsuario(@Param('usuarioId', ParseIntPipe) usuarioId: number) {
     await this.usuarioService.eliminarUsuario(usuarioId);
-    return { message: 'Usuario eliminado exitosamente' };
   }
 }

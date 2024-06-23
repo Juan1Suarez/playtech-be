@@ -68,7 +68,7 @@ export class UsuarioService {
     };
   }
 
-  async eliminarUsuario(usuarioId: number): Promise<void> {
+  async eliminarUsuario(usuarioId: number) {
     const resultQuery: ResultSetHeader = await this.dbService.executeQuery(
       usuarioQueries.delete,
       [usuarioId],
