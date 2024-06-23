@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import Producto from 'src/model/producto.model';
 import { ProductoService } from 'src/service/producto.service';
 
@@ -19,5 +19,11 @@ export class ProductoController {
   @Post()
   async crearProducto(@Body() body: Producto) {
     return await this.productoService.crearProducto(body);
+  }
+
+  @Put(':productoId')
+  async modificarProducto(@Param('productoId', ParseIntPipe) productoId: number, @Body() body: Producto ){
+    body.productoId = productoId;
+    await this.productoService.modificarProducto(body)
   }
 }

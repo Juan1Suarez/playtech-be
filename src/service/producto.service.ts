@@ -51,8 +51,10 @@ export class ProductoService {
       );
     }
 
-    async modificarProducto(producto:Producto){
-
-      
+    async modificarProducto(producto: Producto) {
+       await this.dbService.executeQuery(
+        productoQueries.updateProducto,
+        [producto.tipoDeProducto, producto.modelo, producto.precio, producto.color, producto.descripcion, producto.stock, producto.productoId],
+      );
     }
   }

@@ -4,6 +4,7 @@ const productoQueries = {
     updateFoto: 'update producto set fotoDelete = ?, foto  = ?, fotoDisplay  = ?  where productoId = ? ;',
     delete: 'DELETE FROM producto WHERE productoId = ?;',
     insert: 'insert into producto (tipoDeProducto, modelo, precio, color, descripcion, stock) values (?, ?, ?, ?, ?, ?);',
+    updateProducto:'update producto set tipoDeProducto = ?, modelo = ?, precio = ?, color = ?, descripcion = ?, stock = ?  where productoId = ? ;',
   }
   
   export default productoQueries;
