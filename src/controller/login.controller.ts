@@ -10,4 +10,5 @@ export class LoginController {
   async login(@Body() body: { email: string; password: string }) {
     return await this.loginService.login(body);
   }
+  
 }
