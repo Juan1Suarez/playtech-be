@@ -6,12 +6,15 @@ class Producto {
     productoId: number;
 
     @IsString()
+    @IsOptional()
     tipoDeProducto: string;
 
     @IsString()
+    @IsOptional()
     modelo: string;
 
     @IsInt()
+    @IsOptional()
     precio: number;
 
     @IsString()
@@ -19,15 +22,18 @@ class Producto {
     foto: string;
 
  
-    @IsString()   
+    @IsString()  
+    @IsOptional() 
     color: string;
 
      
-    @IsString()   
+    @IsString()  
+    @IsOptional() 
     descripcion: string;
 
  
     @IsInt()   
+    @IsOptional()
     stock: number;
 
     @IsString()
