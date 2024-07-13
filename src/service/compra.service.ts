@@ -30,7 +30,7 @@ export class CompraService {
         return resultProducto;
       }
 
-      async registroVenta(compra: Compra) {
+      async registroVenta(compra: Compra) { 
         await this.dbService.executeQuery(
           compraQueries.insertCompra,
           [compra.productoId, compra.usuarioId]
