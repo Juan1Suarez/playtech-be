@@ -22,7 +22,7 @@ primary key (usuarioId),
 constraint FK_usuario_roles foreign key (rolId) references roles(rolId)
 )
 
-create table producto (
+create table if not exists producto (
 productoId int not null auto_increment,
 tipoDeProducto varchar(30),
 modelo varchar(100),
