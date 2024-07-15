@@ -34,6 +34,7 @@ export class LoginService {
       rolId: resultQuery[0].rolId,
       usuarioId: resultQuery[0].usuarioId,
       nombre: resultQuery[0].nombre,
+      activo: resultQuery[0].activo,
     };
 
     //CONTRASEÑA TIENE QUE ESTAR HASHEADA
@@ -50,13 +51,14 @@ export class LoginService {
   }
 
   getAccessToken(user: any) {
-    const payload = { email: user.email, rolId: user.rolId, usuarioId: user.usuarioId, nombre: user.nombre };
+    const payload = { email: user.email, rolId: user.rolId, usuarioId: user.usuarioId, nombre: user.nombre , activo: user.activo};
     return {     
       email: user.email,
       rolId: user.rolId,
       accessToken: this.jwtService.sign(payload),
       usuarioId: user.usuarioId,
-      nombre: user.nombre
+      nombre: user.nombre,
+      activo: user.activo
     };
   }
 }

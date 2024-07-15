@@ -8,6 +8,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Put,
   Req,
   Res,
 } from '@nestjs/common';
@@ -28,7 +29,7 @@ export class UsuarioController {
     return await this.usuarioService.crearUsuario(body);
   }
 
-  @Delete(':usuarioId')
+  @Put(':usuarioId')
   async eliminarUsuario(@Param('usuarioId', ParseIntPipe) usuarioId: number) {
     await this.usuarioService.eliminarUsuario(usuarioId);
   }
