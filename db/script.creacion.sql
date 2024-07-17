@@ -10,12 +10,11 @@ rol varchar(15),
 primary key (rolId)
 )
 
-
 create table if not exists usuario (
 usuarioId int not null auto_increment,
 nombre varchar(100) not null,
-email varchar(100) not null,
-password varchar(50) not null,
+email varchar(100) not null unique,
+password varchar(150) not null,
 activo tinyint not null,
 rolId integer,
 primary key (usuarioId),
