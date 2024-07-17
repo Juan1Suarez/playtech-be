@@ -32,3 +32,13 @@ descripcion varchar(2000),
 stock int not null,
 primary key (productoId)
 )
+
+create table compra (
+compraId int not null auto_increment,
+fecha DATETIME,
+primary key (compraId),
+productoId integer,
+usuarioId integer,
+constraint FK_compra_producto foreign key (productoId) references producto(productoId),
+constraint FK_compra_usuario foreign key (usuarioId) references usuario(usuarioId)
+)
