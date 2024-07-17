@@ -12,8 +12,8 @@ export class ProductoController {
   }
 
   @Delete(':productoId')
-  async eliminarProducto(@Param('productoId', ParseIntPipe) usuarioId: number) {
-    await this.productoService.eliminarProducto(usuarioId);
+  async eliminarProducto(@Param('productoId', ParseIntPipe) productoId: number) {
+    await this.productoService.eliminarProducto(productoId);
   }
   
   @Post()

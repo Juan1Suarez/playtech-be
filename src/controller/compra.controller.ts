@@ -15,4 +15,9 @@ export class CompraController {
   async registroVenta (@Body() body: Compra ) {
     return await this.compraService.registroVenta(body);
   }
+
+  @Put(':productoId')
+  async restarStock (@Param('productoId') productoId: number) {
+    await this.compraService.restarStock(productoId);
+  }
 }

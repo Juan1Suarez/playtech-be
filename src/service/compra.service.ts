@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { DatabaseService } from './db.service';
-import { RowDataPacket } from 'mysql2';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import compraQueries from './queries/compra.queries';
 import Compra from 'src/model/compra.model';
 
@@ -35,5 +35,15 @@ export class CompraService {
           compraQueries.insertCompra,
           [compra.productoId, compra.usuarioId]
         )
+      }
+
+      async restarStock(productoId: number) {
+        const resultQuery: ResultSetHeader = await this.dbService.executeQuery(
+          compraQueries.restarStock,
+          [productoId]
+        )
+        if (resultQuery.affectedRows === 0) {
+          throw new HttpException('No hay suficiente stock', HttpStatus.FORBIDDEN);
+        }
       }
   }

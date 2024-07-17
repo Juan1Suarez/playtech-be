@@ -39,6 +39,15 @@ export class UsuarioService {
   }
 
   async crearUsuario(usuario: any) {
+    const emailExistente: RowDataPacket[] = await this.dbService.executeSelect(
+      usuarioQueries.selectByEmailExistente,
+      [usuario.email]
+    )
+
+    if (emailExistente.length > 0){
+      throw new HttpException('Email ya existente', HttpStatus.FORBIDDEN);
+    }
+
     const encriptedPassword = await this.generateHash(usuario.password);
     const resultQuery: ResultSetHeader = await this.dbService.executeQuery(
       usuarioQueries.insert,
