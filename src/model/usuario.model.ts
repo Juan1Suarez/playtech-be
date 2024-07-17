@@ -6,6 +6,7 @@ class Usuario {
     usuarioId: number;
 
     @IsString()
+    @IsOptional()
     nombre: string;
 
     @IsString()
@@ -15,9 +16,12 @@ class Usuario {
     password: string;
 
     @IsInt()
+    @IsOptional()
     activo: number;
 
-    @IsInt()
+ 
+    @IsInt()   
+    @IsOptional()
     rolId: number;
 }
 

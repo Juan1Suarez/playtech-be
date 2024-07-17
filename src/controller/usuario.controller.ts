@@ -3,10 +3,13 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   HttpStatus,
   Param,
   ParseIntPipe,
   Post,
+  Put,
+  Req,
   Res,
 } from '@nestjs/common';
 import Usuario from 'src/model/usuario.model';
@@ -22,13 +25,12 @@ export class UsuarioController {
   }
 
   @Post()
-  async crearUsuario(@Body() body: Usuario): Promise<Usuario> {
+  async crearUsuario(@Body() body: { email: string; password: string }) {
     return await this.usuarioService.crearUsuario(body);
   }
 
-  @Delete(':usuarioId')
-  async eliminarUsuario(@Param('usuarioId', ParseIntPipe) usuarioId: number): Promise<{ message: string }> {
+  @Put(':usuarioId')
+  async eliminarUsuario(@Param('usuarioId', ParseIntPipe) usuarioId: number) {
     await this.usuarioService.eliminarUsuario(usuarioId);
-    return { message: 'Usuario eliminado exitosamente' };
   }
 }
