@@ -30,6 +30,8 @@ foto varchar(2000),
 color varchar(100),
 descripcion varchar(2000),
 stock int not null,
+fotoDelete varchar(1000),
+fotoDisplay varchar(1000),
 primary key (productoId)
 )
 
