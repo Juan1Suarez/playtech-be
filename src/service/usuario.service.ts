@@ -52,13 +52,6 @@ export class UsuarioService {
         usuarioQueries.activarUsuario,
         [usuario.nombre, encriptedPassword, emailExistente[0].usuarioId]
       );
-
-        const activarUsuario = {
-          email: emailExistente[0].email,
-          password: emailExistente[0].password,
-          rolId: emailExistente[0].rolId,
-        };
-        return this.getAccessToken(activarUsuario);
       } else {
         throw new HttpException('Email ya existente', HttpStatus.FORBIDDEN);
       }
