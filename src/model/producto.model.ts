@@ -5,6 +5,10 @@ class Producto {
     @IsOptional()
     productoId: number;
 
+    @IsInt()
+    @IsOptional()
+    tipoDeProductoId: number;
+
     @IsString()
     @IsOptional()
     tipoDeProducto: string;

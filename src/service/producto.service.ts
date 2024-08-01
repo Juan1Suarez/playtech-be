@@ -19,6 +19,7 @@ export class ProductoService {
       const resultProducto = resultQuery.map((rs: RowDataPacket) => {
         return {
           productoId: rs['productoId'],
+          tipoDeProductoId: rs['tipoDeProductoId'],
           tipoDeProducto: rs['tipoDeProducto'],
           modelo: rs['modelo'],
           precio: rs['precio'],
@@ -33,7 +34,7 @@ export class ProductoService {
       return resultProducto;
     }
 
-    async eliminarProducto(productoId: number){
+    async eliminarProducto(productoId: number ){
       const resultQuery: ResultSetHeader = await this.dbService.executeQuery(
         productoQueries.delete,
         [productoId],
