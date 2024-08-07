@@ -5,6 +5,8 @@ const productoQueries = {
     delete: 'DELETE FROM producto WHERE productoId = ?;',
     insert: 'insert into producto (tipoDeProducto, modelo, precio, color, descripcion, stock) values (?, ?, ?, ?, ?, ?);',
     updateProducto:'update producto set tipoDeProducto = ?, modelo = ?, precio = ?, color = ?, descripcion = ?, stock = ?  where productoId = ? ;',
+    selectByGrupo: 'SELECT p.* FROM producto p JOIN tipoDeProducto t ON p.tipoDeProductoId = t.tipoDeProductoId WHERE t.tipoDeProductoId = ?;',
+    selectByTipoDeProducto: 'SELECT * from tipoDeProducto;',
   }
   
   export default productoQueries;
