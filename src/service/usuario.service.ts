@@ -52,6 +52,7 @@ export class UsuarioService {
         usuarioQueries.activarUsuario,
         [usuario.nombre, encriptedPassword, emailExistente[0].usuarioId]
       );
+      return;
       } else {
         throw new HttpException('Email ya existente', HttpStatus.FORBIDDEN);
       }

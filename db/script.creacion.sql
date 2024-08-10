@@ -44,3 +44,9 @@ usuarioId integer,
 constraint FK_compra_producto foreign key (productoId) references producto(productoId),
 constraint FK_compra_usuario foreign key (usuarioId) references usuario(usuarioId)
 )
+
+CREATE TABLE tipoDeProducto (
+  tipoDeProductoId int NOT NULL AUTO_INCREMENT,
+  grupo varchar(100),
+  PRIMARY KEY (tipoDeProductoId)
+  )
