@@ -30,6 +30,8 @@ foto varchar(2000),
 color varchar(100),
 descripcion varchar(2000),
 stock int not null,
+fotoDelete varchar(1000),
+fotoDisplay varchar(1000),
 primary key (productoId)
 )
 
@@ -42,3 +44,9 @@ usuarioId integer,
 constraint FK_compra_producto foreign key (productoId) references producto(productoId),
 constraint FK_compra_usuario foreign key (usuarioId) references usuario(usuarioId)
 )
+
+CREATE TABLE tipoDeProducto (
+  tipoDeProductoId int NOT NULL AUTO_INCREMENT,
+  grupo varchar(100),
+  PRIMARY KEY (tipoDeProductoId)
+  )

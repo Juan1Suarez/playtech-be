@@ -3,6 +3,7 @@ import { DatabaseService } from './db.service';
 import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import productoQueries from './queries/producto.queries';
 import Producto from 'src/model/producto.model';
+import tipoDeProducto from 'src/model/tipodeproducto';
 
 
 @Injectable()
@@ -19,6 +20,7 @@ export class ProductoService {
       const resultProducto = resultQuery.map((rs: RowDataPacket) => {
         return {
           productoId: rs['productoId'],
+          tipoDeProductoId: rs['tipoDeProductoId'],
           tipoDeProducto: rs['tipoDeProducto'],
           modelo: rs['modelo'],
           precio: rs['precio'],
@@ -32,8 +34,42 @@ export class ProductoService {
       });
       return resultProducto;
     }
+    
+    async verTipoDeProductos(): Promise<tipoDeProducto[]> {
+      const resultQuery: RowDataPacket[] = await this.dbService.executeSelect(
+        productoQueries.selectByTipoDeProducto,
+        [],
+      );
+      const resultProducto = resultQuery.map((rs: RowDataPacket) => {
+        return {
+          tipoDeProductoId: rs['tipoDeProductoId'],
+          grupo: rs['grupo'],
+        };
+      });
+      return resultProducto;
+    }
 
-    async eliminarProducto(productoId: number){
+    async verProductoGrupo(grupo: number): Promise<Producto[]> {
+      const resultQuery: RowDataPacket[] = await this.dbService.executeSelect(
+        productoQueries.selectByGrupo,
+        [grupo],
+      );
+      return resultQuery.map((rs: RowDataPacket) => ({
+        productoId: rs['productoId'],
+        tipoDeProductoId: rs['tipoDeProductoId'],
+        tipoDeProducto: rs['tipoDeProducto'],
+        modelo: rs['modelo'],
+        precio: rs['precio'],
+        foto: rs['foto'],
+        color: rs['color'],
+        descripcion: rs['descripcion'],
+        stock: rs['stock'],
+        fotoDelete: rs['fotoDelete'],
+        fotoDisplay: rs['fotoDisplay'],
+      }));
+    }
+
+    async eliminarProducto(productoId: number ){
       const resultQuery: ResultSetHeader = await this.dbService.executeQuery(
         productoQueries.delete,
         [productoId],
