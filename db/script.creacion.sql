@@ -21,18 +21,20 @@ primary key (usuarioId),
 constraint FK_usuario_roles foreign key (rolId) references roles(rolId)
 )
 
-create table if not exists producto (
-productoId int not null auto_increment,
-tipoDeProducto varchar(30),
-modelo varchar(100),
-precio int not null,
-foto varchar(2000),
-color varchar(100),
-descripcion varchar(2000),
-stock int not null,
-fotoDelete varchar(1000),
-fotoDisplay varchar(1000),
-primary key (productoId)
+CREATE TABLE producto (
+  productoId int NOT NULL AUTO_INCREMENT,
+  tipoDeProductoId int,
+  tipoDeProducto varchar(30) DEFAULT NULL,
+  modelo varchar(100) DEFAULT NULL,
+  precio int NOT NULL,
+  foto varchar(2000) DEFAULT NULL,
+  color varchar(100) DEFAULT NULL,
+  descripcion varchar(2000) DEFAULT NULL,
+  stock int NOT NULL,
+  fotoDelete varchar(1000),
+  fotoDisplay varchar(1000),
+  PRIMARY KEY (productoId),
+  constraint FK_producto_tipoDeProducto FOREIGN key (tipoDeProductoId) references tipoDeProducto(tipoDeProductoId)
 )
 
 create table compra (
